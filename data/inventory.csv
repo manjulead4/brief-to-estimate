@@ -1,0 +1,41 @@
+sku,name,product_type,metal,purity,stone_type,stone_count,dimension_mm,finish,price_usd
+R-001,Solitaire Classic,ring,gold,18k,diamond,1,18,polished,1450
+R-002,Halo Round,ring,white_gold,18k,diamond,13,19,polished,2100
+R-003,Pave Band,ring,gold,14k,diamond,24,18,polished,1800
+R-004,Plain Band Matte,ring,gold,18k,none,0,18,matte,620
+R-005,Silver Stacker,ring,silver,925,none,0,17,brushed,85
+R-006,Ruby Trilogy,ring,rose_gold,18k,ruby,3,18,polished,1650
+R-007,Emerald Cut Solitaire,ring,platinum,950,emerald,1,18,polished,2900
+R-008,Sapphire Cluster,ring,white_gold,14k,sapphire,7,19,polished,1350
+R-009,CZ Cocktail Ring,ring,silver,925,cubic_zirconia,9,20,polished,120
+R-010,Hammered Band,ring,silver,925,none,0,19,hammered,95
+R-011,Platinum Eternity,ring,platinum,950,diamond,20,17,polished,4200
+R-012,Rose Gold Pave,ring,rose_gold,14k,diamond,16,17,polished,1500
+P-001,Teardrop Diamond Pendant,pendant,gold,18k,diamond,1,15,polished,780
+P-002,Ruby Heart Pendant,pendant,rose_gold,14k,ruby,1,12,polished,540
+P-003,Silver Initial Disc,pendant,silver,925,none,0,20,brushed,60
+P-004,Emerald Drop Pendant,pendant,gold,18k,emerald,1,16,polished,990
+P-005,Sapphire Halo Pendant,pendant,white_gold,18k,sapphire,9,18,polished,1250
+P-006,CZ Star Pendant,pendant,silver,925,cubic_zirconia,5,14,polished,70
+P-007,Platinum Bar Pendant,pendant,platinum,950,none,0,25,matte,1100
+P-008,Cluster Diamond Pendant,pendant,gold,14k,diamond,12,17,polished,1400
+E-001,Diamond Studs,earrings,white_gold,14k,diamond,2,5,polished,900
+E-002,Gold Hoops,earrings,gold,18k,none,0,25,polished,420
+E-003,Ruby Drop Earrings,earrings,gold,18k,ruby,2,20,polished,1100
+E-004,Silver Hoops Hammered,earrings,silver,925,none,0,30,hammered,55
+E-005,CZ Studs,earrings,silver,925,cubic_zirconia,2,6,polished,35
+E-006,Emerald Studs,earrings,rose_gold,14k,emerald,2,6,polished,760
+E-007,Sapphire Halo Earrings,earrings,platinum,950,sapphire,26,14,polished,3800
+E-008,Pave Huggies,earrings,gold,14k,diamond,30,12,polished,1300
+B-001,Tennis Bracelet,bracelet,white_gold,14k,diamond,45,175,polished,3900
+B-002,Gold Bangle,bracelet,gold,18k,none,0,65,polished,1300
+B-003,Silver Chain Bracelet,bracelet,silver,925,none,0,190,polished,75
+B-004,Ruby Tennis Bracelet,bracelet,rose_gold,18k,ruby,30,180,polished,4500
+B-005,Hammered Cuff,bracelet,silver,925,none,0,60,hammered,110
+B-006,CZ Charm Bracelet,bracelet,silver,925,cubic_zirconia,8,185,polished,95
+N-001,Gold Chain 18in,necklace,gold,18k,none,0,450,polished,950
+N-002,Diamond Station Necklace,necklace,white_gold,14k,diamond,7,420,polished,2200
+N-003,Silver Rope Chain,necklace,silver,925,none,0,500,brushed,90
+N-004,Sapphire Riviere,necklace,platinum,950,sapphire,35,400,polished,6800
+N-005,Emerald Pendant Necklace,necklace,gold,18k,emerald,1,450,polished,1200
+N-006,Rose Gold Paperclip,necklace,rose_gold,14k,none,0,460,polished,640

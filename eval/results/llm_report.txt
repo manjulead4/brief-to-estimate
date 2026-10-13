@@ -1,0 +1,50 @@
+==================================================================
+cases: 44 | images: 13 | extraction modes: {'llm': 41, 'rules_fallback': 2, 'empty_default': 1}
+-- Extraction field accuracy (7 fields x 44 cases) --
+  product_type   100.0%
+  metal           97.7%
+  purity          88.6%
+  stone_type      84.1%
+  stone_count     86.4%
+  dimension_mm    97.7%
+  finish          97.7%
+  OVERALL         93.2%   all-7-fields-correct cases: 65.9%
+  group core     n=34  field acc 94.1%  all-7-correct 70.6%
+  group natural  n=10  field acc 90.0%  all-7-correct 50.0%
+-- Matching (33 cases with a labelled SKU) --
+  end-to-end  top-1 100.0%  top-3 100.0%
+  oracle spec top-1 100.0%  top-3 100.0%   (matcher alone, perfect extraction)
+  auto-selected 33/44 cases, precision of auto-selection 93.9%
+-- Count (images: 13) --
+  CV count MAE vs image truth: 3.46   by confidence: {'high': 0.5, 'low': 8.2}
+  by difficulty: {'easy': 6.4, 'medium': 0.8, 'hard': 3.0}
+  final spec stone_count MAE (26 labelled): 1.27
+  vision-LLM count MAE: 0.00 (n=3)
+-- Review flags --
+  flag rate 31.8% (14/44) | recall on should-flag 78.6% | precision 78.6%
+  cases with an error: 17, of which NOT flagged (silent failures): 12 ['c02', 'c10', 'c12', 'c14', 'c23', 'c25', 'c26', 'c32', 'n02', 'n03', 'n04', 'n08']
+-- Field-confidence calibration (accuracy per label) --
+  high    89.5%  (n=19)
+  medium  91.9%  (n=186)
+  low     96.1%  (n=103)
+-- latency ms: median 7078.8  p95 34068.4 --
+-- worst cases --
+  c33  brief='silver tennis bracelet, lots of tiny stones, photo attached'
+      wrong fields (pred, expected): {'purity': ('925', None), 'stone_count': (16, 45)}
+      auto=None expected_sku=None cand=['B-006', 'B-003', 'B-005'] flagged=True cv=16 true=45
+  c32  brief='ring with stones, see photo'
+      wrong fields (pred, expected): {'metal': ('gold', None), 'stone_count': (14, 15)}
+      auto=R-003 expected_sku=None cand=['R-003', 'R-002', 'R-001'] flagged=False cv=15 true=15
+  c10  brief='hammered silver band'
+      wrong fields (pred, expected): {'purity': ('925', None), 'stone_type': ('none', None)}
+      auto=R-010 expected_sku=R-010 cand=['R-010', 'R-005', 'R-009'] flagged=False cv=None true=None
+  c26  brief='silver rope chain 500mm brushed'
+      wrong fields (pred, expected): {'purity': ('925', None), 'stone_type': ('none', None)}
+      auto=N-003 expected_sku=N-003 cand=['N-003', 'N-006', 'N-001'] flagged=False cv=None true=None
+  c02  brief='White gold halo ring, 18k, 13 diamonds around the centre stone, polish'
+      wrong fields (pred, expected): {'stone_count': (14, 13)}
+      auto=R-002 expected_sku=R-002 cand=['R-002', 'R-012', 'R-003'] flagged=False cv=16 true=13
+  c12  brief='gold pendant with a teardrop diamond, 18k, 15 mm tall'
+      wrong fields (pred, expected): {'stone_count': (1, None)}
+      auto=P-001 expected_sku=P-001 cand=['P-001', 'P-004', 'P-008'] flagged=False cv=None true=None
+FINISHED

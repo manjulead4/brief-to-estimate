@@ -1,0 +1,49 @@
+==================================================================
+cases: 44 | images: 13 | extraction modes: {'rules_fallback': 43, 'empty_default': 1}
+-- Extraction field accuracy (7 fields x 44 cases) --
+  product_type    97.7%
+  metal          100.0%
+  purity         100.0%
+  stone_type      97.7%
+  stone_count     93.2%
+  dimension_mm    97.7%
+  finish         100.0%
+  OVERALL         98.1%   all-7-fields-correct cases: 88.6%
+  group core     n=34  field acc 99.2%  all-7-correct 94.1%
+  group natural  n=10  field acc 94.3%  all-7-correct 70.0%
+-- Matching (33 cases with a labelled SKU) --
+  end-to-end  top-1 100.0%  top-3 100.0%
+  oracle spec top-1 100.0%  top-3 100.0%   (matcher alone, perfect extraction)
+  auto-selected 28/44 cases, precision of auto-selection 100.0%
+-- Count (images: 13) --
+  CV count MAE vs image truth: 3.46   by confidence: {'high': 0.5, 'low': 8.2}
+  by difficulty: {'easy': 6.4, 'medium': 0.8, 'hard': 3.0}
+  final spec stone_count MAE (26 labelled): 1.19
+  vision-LLM count MAE: not run (needs --vlm and an API key)
+-- Review flags --
+  flag rate 45.5% (20/44) | recall on should-flag 92.9% | precision 65.0%
+  cases with an error: 7, of which NOT flagged (silent failures): 1 ['c31']
+-- Field-confidence calibration (accuracy per label) --
+  high   100.0%  (n=173)
+  medium 100.0%  (n=14)
+  low     95.0%  (n=121)
+-- latency ms: median 0.3  p95 3.6 --
+-- worst cases --
+  c33  brief='silver tennis bracelet, lots of tiny stones, photo attached'
+      wrong fields (pred, expected): {'stone_count': (16, 45)}
+      auto=None expected_sku=None cand=['B-006', 'B-003', 'B-005'] flagged=True cv=16 true=45
+  c31  brief='dimond solitare ring, 18k yelow gold'
+      wrong fields (pred, expected): {'stone_count': (None, 1)}
+      auto=R-001 expected_sku=R-001 cand=['R-001', 'R-003', 'R-002'] flagged=False cv=None true=None
+  n04  brief='Need a 1ct round brilliant on a platinum band.'
+      wrong fields (pred, expected): {'stone_type': (None, 'diamond'), 'stone_count': (None, 1)}
+      auto=None expected_sku=None cand=['R-007', 'R-011', 'R-001'] flagged=True cv=None true=None
+  c21  brief='Tennis bracelet white gold 14k with about 45 diamonds, 7 inch'
+      wrong fields (pred, expected): {}
+      auto=None expected_sku=B-001 cand=['B-001', 'B-004', 'B-006'] flagged=True cv=24 true=32
+  n07  brief='18k white gold, size 9, three-stone with sapphires'
+      wrong fields (pred, expected): {'product_type': (None, 'ring')}
+      auto=None expected_sku=None cand=['P-005', 'R-008', 'R-002'] flagged=True cv=None true=None
+  n09  brief='Ring, 18ct yellow gold, plain, 2 mm band'
+      wrong fields (pred, expected): {'dimension_mm': (2.0, None)}
+      auto=R-004 expected_sku=R-004 cand=['R-004', 'R-001', 'R-005'] flagged=True cv=None true=None

@@ -1,0 +1,1349 @@
+{
+ "overall_field_acc": 0.9318181818181818,
+ "per_field": {
+  "product_type": 1.0,
+  "metal": 0.9772727272727273,
+  "purity": 0.8863636363636364,
+  "stone_type": 0.8409090909090909,
+  "stone_count": 0.8636363636363636,
+  "dimension_mm": 0.9772727272727273,
+  "finish": 0.9772727272727273
+ },
+ "top1": 1.0,
+ "top3": 1.0,
+ "oracle_top1": 1.0,
+ "oracle_top3": 1.0,
+ "auto_precision": 0.9393939393939394,
+ "cv_mae": 3.4615384615384617,
+ "final_count_mae": 1.2692307692307692,
+ "flag_rate": 0.3181818181818182,
+ "flag_recall": 0.7857142857142857,
+ "flag_precision": 0.7857142857142857,
+ "silent_failures": [
+  "c02",
+  "c10",
+  "c12",
+  "c14",
+  "c23",
+  "c25",
+  "c26",
+  "c32",
+  "n02",
+  "n03",
+  "n04",
+  "n08"
+ ],
+ "cases": [
+  {
+   "id": "c01",
+   "pred": {
+    "product_type": "ring",
+    "metal": "gold",
+    "purity": "18k",
+    "stone_type": "diamond",
+    "stone_count": 1,
+    "dimension_mm": 17.35,
+    "finish": "polished"
+   },
+   "oks": {
+    "product_type": true,
+    "metal": true,
+    "purity": true,
+    "stone_type": true,
+    "stone_count": true,
+    "dimension_mm": true,
+    "finish": true
+   },
+   "cand": [
+    "R-001",
+    "R-003",
+    "R-002"
+   ],
+   "auto": "R-001",
+   "flagged": false,
+   "flags": []
+  },
+  {
+   "id": "c02",
+   "pred": {
+    "product_type": "ring",
+    "metal": "white_gold",
+    "purity": "18k",
+    "stone_type": "diamond",
+    "stone_count": 14,
+    "dimension_mm": 19.0,
+    "finish": "polished"
+   },
+   "oks": {
+    "product_type": true,
+    "metal": true,
+    "purity": true,
+    "stone_type": true,
+    "stone_count": false,
+    "dimension_mm": true,
+    "finish": true
+   },
+   "cand": [
+    "R-002",
+    "R-012",
+    "R-003"
+   ],
+   "auto": "R-002",
+   "flagged": false,
+   "flags": []
+  },
+  {
+   "id": "c03",
+   "pred": {
+    "product_type": "ring",
+    "metal": "gold",
+    "purity": "14k",
+    "stone_type": "diamond",
+    "stone_count": 24,
+    "dimension_mm": null,
+    "finish": null
+   },
+   "oks": {
+    "product_type": true,
+    "metal": true,
+    "purity": true,
+    "stone_type": true,
+    "stone_count": true,
+    "dimension_mm": true,
+    "finish": true
+   },
+   "cand": [
+    "R-003",
+    "R-012",
+    "R-001"
+   ],
+   "auto": "R-003",
+   "flagged": true,
+   "flags": [
+    "low-confidence image count: detectors disagree: Hough=26 vs contour=10"
+   ]
+  },
+  {
+   "id": "c04",
+   "pred": {
+    "product_type": "ring",
+    "metal": "gold",
+    "purity": "18k",
+    "stone_type": "none",
+    "stone_count": 0,
+    "dimension_mm": 17.35,
+    "finish": "matte"
+   },
+   "oks": {
+    "product_type": true,
+    "metal": true,
+    "purity": true,
+    "stone_type": true,
+    "stone_count": true,
+    "dimension_mm": true,
+    "finish": true
+   },
+   "cand": [
+    "R-004",
+    "R-001",
+    "R-005"
+   ],
+   "auto": "R-004",
+   "flagged": false,
+   "flags": []
+  },
+  {
+   "id": "c05",
+   "pred": {
+    "product_type": "ring",
+    "metal": "silver",
+    "purity": "925",
+    "stone_type": "none",
+    "stone_count": 0,
+    "dimension_mm": null,
+    "finish": "brushed"
+   },
+   "oks": {
+    "product_type": true,
+    "metal": true,
+    "purity": true,
+    "stone_type": true,
+    "stone_count": true,
+    "dimension_mm": true,
+    "finish": true
+   },
+   "cand": [
+    "R-005",
+    "R-010",
+    "R-009"
+   ],
+   "auto": "R-005",
+   "flagged": false,
+   "flags": []
+  },
+  {
+   "id": "c06",
+   "pred": {
+    "product_type": "ring",
+    "metal": "rose_gold",
+    "purity": "18k",
+    "stone_type": "ruby",
+    "stone_count": 3,
+    "dimension_mm": null,
+    "finish": null
+   },
+   "oks": {
+    "product_type": true,
+    "metal": true,
+    "purity": true,
+    "stone_type": true,
+    "stone_count": true,
+    "dimension_mm": true,
+    "finish": true
+   },
+   "cand": [
+    "R-006",
+    "R-012",
+    "R-001"
+   ],
+   "auto": "R-006",
+   "flagged": false,
+   "flags": []
+  },
+  {
+   "id": "c07",
+   "pred": {
+    "product_type": "ring",
+    "metal": "platinum",
+    "purity": null,
+    "stone_type": "emerald",
+    "stone_count": 1,
+    "dimension_mm": null,
+    "finish": null
+   },
+   "oks": {
+    "product_type": true,
+    "metal": true,
+    "purity": true,
+    "stone_type": true,
+    "stone_count": true,
+    "dimension_mm": true,
+    "finish": true
+   },
+   "cand": [
+    "R-007",
+    "R-011",
+    "R-001"
+   ],
+   "auto": "R-007",
+   "flagged": false,
+   "flags": []
+  },
+  {
+   "id": "c08",
+   "pred": {
+    "product_type": "ring",
+    "metal": "white_gold",
+    "purity": "14k",
+    "stone_type": "sapphire",
+    "stone_count": 7,
+    "dimension_mm": null,
+    "finish": null
+   },
+   "oks": {
+    "product_type": true,
+    "metal": true,
+    "purity": true,
+    "stone_type": true,
+    "stone_count": true,
+    "dimension_mm": true,
+    "finish": true
+   },
+   "cand": [
+    "R-008",
+    "R-002",
+    "R-012"
+   ],
+   "auto": "R-008",
+   "flagged": false,
+   "flags": []
+  },
+  {
+   "id": "c09",
+   "pred": {
+    "product_type": "ring",
+    "metal": "silver",
+    "purity": null,
+    "stone_type": "cubic_zirconia",
+    "stone_count": 9,
+    "dimension_mm": null,
+    "finish": "polished"
+   },
+   "oks": {
+    "product_type": true,
+    "metal": true,
+    "purity": true,
+    "stone_type": true,
+    "stone_count": true,
+    "dimension_mm": true,
+    "finish": true
+   },
+   "cand": [
+    "R-009",
+    "R-005",
+    "R-010"
+   ],
+   "auto": "R-009",
+   "flagged": false,
+   "flags": []
+  },
+  {
+   "id": "c10",
+   "pred": {
+    "product_type": "ring",
+    "metal": "silver",
+    "purity": "925",
+    "stone_type": "none",
+    "stone_count": null,
+    "dimension_mm": null,
+    "finish": "hammered"
+   },
+   "oks": {
+    "product_type": true,
+    "metal": true,
+    "purity": false,
+    "stone_type": false,
+    "stone_count": true,
+    "dimension_mm": true,
+    "finish": true
+   },
+   "cand": [
+    "R-010",
+    "R-005",
+    "R-009"
+   ],
+   "auto": "R-010",
+   "flagged": false,
+   "flags": []
+  },
+  {
+   "id": "c11",
+   "pred": {
+    "product_type": "ring",
+    "metal": "platinum",
+    "purity": "950",
+    "stone_type": "diamond",
+    "stone_count": 20,
+    "dimension_mm": 17.0,
+    "finish": null
+   },
+   "oks": {
+    "product_type": true,
+    "metal": true,
+    "purity": false,
+    "stone_type": true,
+    "stone_count": true,
+    "dimension_mm": true,
+    "finish": true
+   },
+   "cand": [
+    "R-011",
+    "R-007",
+    "R-012"
+   ],
+   "auto": "R-011",
+   "flagged": true,
+   "flags": [
+    "low-confidence image count: detectors disagree: Hough=18 vs contour=4"
+   ]
+  },
+  {
+   "id": "c12",
+   "pred": {
+    "product_type": "pendant",
+    "metal": "gold",
+    "purity": "18k",
+    "stone_type": "diamond",
+    "stone_count": 1,
+    "dimension_mm": 15.0,
+    "finish": null
+   },
+   "oks": {
+    "product_type": true,
+    "metal": true,
+    "purity": true,
+    "stone_type": true,
+    "stone_count": false,
+    "dimension_mm": true,
+    "finish": true
+   },
+   "cand": [
+    "P-001",
+    "P-004",
+    "P-008"
+   ],
+   "auto": "P-001",
+   "flagged": false,
+   "flags": []
+  },
+  {
+   "id": "c13",
+   "pred": {
+    "product_type": "pendant",
+    "metal": "rose_gold",
+    "purity": "14k",
+    "stone_type": "ruby",
+    "stone_count": 1,
+    "dimension_mm": null,
+    "finish": null
+   },
+   "oks": {
+    "product_type": true,
+    "metal": true,
+    "purity": true,
+    "stone_type": true,
+    "stone_count": true,
+    "dimension_mm": true,
+    "finish": true
+   },
+   "cand": [
+    "P-002",
+    "P-001",
+    "P-004"
+   ],
+   "auto": "P-002",
+   "flagged": false,
+   "flags": []
+  },
+  {
+   "id": "c14",
+   "pred": {
+    "product_type": "pendant",
+    "metal": "silver",
+    "purity": null,
+    "stone_type": "none",
+    "stone_count": null,
+    "dimension_mm": 20.0,
+    "finish": "brushed"
+   },
+   "oks": {
+    "product_type": true,
+    "metal": true,
+    "purity": true,
+    "stone_type": false,
+    "stone_count": true,
+    "dimension_mm": true,
+    "finish": true
+   },
+   "cand": [
+    "P-003",
+    "P-006",
+    "P-007"
+   ],
+   "auto": "P-003",
+   "flagged": false,
+   "flags": []
+  },
+  {
+   "id": "c15",
+   "pred": {
+    "product_type": "pendant",
+    "metal": "gold",
+    "purity": "18k",
+    "stone_type": "emerald",
+    "stone_count": null,
+    "dimension_mm": 16.0,
+    "finish": null
+   },
+   "oks": {
+    "product_type": true,
+    "metal": true,
+    "purity": true,
+    "stone_type": true,
+    "stone_count": true,
+    "dimension_mm": true,
+    "finish": true
+   },
+   "cand": [
+    "P-004",
+    "P-001",
+    "P-008"
+   ],
+   "auto": "P-004",
+   "flagged": false,
+   "flags": []
+  },
+  {
+   "id": "c16",
+   "pred": {
+    "product_type": "pendant",
+    "metal": "white_gold",
+    "purity": "18k",
+    "stone_type": "sapphire",
+    "stone_count": 9,
+    "dimension_mm": null,
+    "finish": null
+   },
+   "oks": {
+    "product_type": true,
+    "metal": true,
+    "purity": true,
+    "stone_type": true,
+    "stone_count": true,
+    "dimension_mm": true,
+    "finish": true
+   },
+   "cand": [
+    "P-005",
+    "P-008",
+    "P-001"
+   ],
+   "auto": "P-005",
+   "flagged": true,
+   "flags": [
+    "low-confidence image count: detectors disagree: Hough=9 vs contour=2"
+   ]
+  },
+  {
+   "id": "c17",
+   "pred": {
+    "product_type": "pendant",
+    "metal": "silver",
+    "purity": null,
+    "stone_type": "cubic_zirconia",
+    "stone_count": 5,
+    "dimension_mm": null,
+    "finish": null
+   },
+   "oks": {
+    "product_type": true,
+    "metal": true,
+    "purity": true,
+    "stone_type": true,
+    "stone_count": true,
+    "dimension_mm": true,
+    "finish": true
+   },
+   "cand": [
+    "P-006",
+    "P-003",
+    "P-008"
+   ],
+   "auto": "P-006",
+   "flagged": false,
+   "flags": []
+  },
+  {
+   "id": "c18",
+   "pred": {
+    "product_type": "earrings",
+    "metal": "white_gold",
+    "purity": "14k",
+    "stone_type": "diamond",
+    "stone_count": 2,
+    "dimension_mm": 5.0,
+    "finish": null
+   },
+   "oks": {
+    "product_type": true,
+    "metal": true,
+    "purity": true,
+    "stone_type": true,
+    "stone_count": true,
+    "dimension_mm": true,
+    "finish": true
+   },
+   "cand": [
+    "E-001",
+    "E-008",
+    "E-006"
+   ],
+   "auto": "E-001",
+   "flagged": false,
+   "flags": []
+  },
+  {
+   "id": "c19",
+   "pred": {
+    "product_type": "earrings",
+    "metal": "gold",
+    "purity": "18k",
+    "stone_type": "none",
+    "stone_count": 0,
+    "dimension_mm": 25.0,
+    "finish": "polished"
+   },
+   "oks": {
+    "product_type": true,
+    "metal": true,
+    "purity": true,
+    "stone_type": true,
+    "stone_count": true,
+    "dimension_mm": true,
+    "finish": true
+   },
+   "cand": [
+    "E-002",
+    "E-003",
+    "E-004"
+   ],
+   "auto": "E-002",
+   "flagged": false,
+   "flags": [
+    "extraction mode 'rules_fallback': call failed: gemini/gemini-3.5-flash: Client error '429 Too Many Requests' for url 'https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429; call failed: gemini/gemini-3.1-flash-lite: Server error '503 Service Unavailable' for url 'https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite:generateContent'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/503; all LLM attempts failed; degraded to keyword rules"
+   ]
+  },
+  {
+   "id": "c20",
+   "pred": {
+    "product_type": "earrings",
+    "metal": "gold",
+    "purity": "18k",
+    "stone_type": "ruby",
+    "stone_count": null,
+    "dimension_mm": null,
+    "finish": null
+   },
+   "oks": {
+    "product_type": true,
+    "metal": true,
+    "purity": true,
+    "stone_type": true,
+    "stone_count": true,
+    "dimension_mm": true,
+    "finish": true
+   },
+   "cand": [
+    "E-003",
+    "E-002",
+    "E-008"
+   ],
+   "auto": "E-003",
+   "flagged": false,
+   "flags": []
+  },
+  {
+   "id": "c21",
+   "pred": {
+    "product_type": "bracelet",
+    "metal": "white_gold",
+    "purity": "14k",
+    "stone_type": "diamond",
+    "stone_count": 45,
+    "dimension_mm": 177.8,
+    "finish": null
+   },
+   "oks": {
+    "product_type": true,
+    "metal": true,
+    "purity": true,
+    "stone_type": true,
+    "stone_count": true,
+    "dimension_mm": true,
+    "finish": true
+   },
+   "cand": [
+    "B-001",
+    "B-004",
+    "B-006"
+   ],
+   "auto": null,
+   "flagged": true,
+   "flags": [
+    "sources disagree: brief/LLM=45 vs CV=24",
+    "low-confidence image count: detectors disagree: Hough=24 vs contour=4",
+    "auto-select withheld: low-confidence field used in match"
+   ]
+  },
+  {
+   "id": "c22",
+   "pred": {
+    "product_type": "bracelet",
+    "metal": "gold",
+    "purity": "18k",
+    "stone_type": null,
+    "stone_count": null,
+    "dimension_mm": 65.0,
+    "finish": null
+   },
+   "oks": {
+    "product_type": true,
+    "metal": true,
+    "purity": true,
+    "stone_type": true,
+    "stone_count": true,
+    "dimension_mm": true,
+    "finish": true
+   },
+   "cand": [
+    "B-002",
+    "B-004",
+    "B-001"
+   ],
+   "auto": "B-002",
+   "flagged": false,
+   "flags": []
+  },
+  {
+   "id": "c23",
+   "pred": {
+    "product_type": "bracelet",
+    "metal": "silver",
+    "purity": null,
+    "stone_type": "none",
+    "stone_count": null,
+    "dimension_mm": 190.0,
+    "finish": null
+   },
+   "oks": {
+    "product_type": true,
+    "metal": true,
+    "purity": true,
+    "stone_type": false,
+    "stone_count": true,
+    "dimension_mm": true,
+    "finish": true
+   },
+   "cand": [
+    "B-003",
+    "B-005",
+    "B-006"
+   ],
+   "auto": "B-003",
+   "flagged": false,
+   "flags": []
+  },
+  {
+   "id": "c24",
+   "pred": {
+    "product_type": "bracelet",
+    "metal": "rose_gold",
+    "purity": "18k",
+    "stone_type": "ruby",
+    "stone_count": 30,
+    "dimension_mm": null,
+    "finish": null
+   },
+   "oks": {
+    "product_type": true,
+    "metal": true,
+    "purity": true,
+    "stone_type": true,
+    "stone_count": true,
+    "dimension_mm": true,
+    "finish": true
+   },
+   "cand": [
+    "B-004",
+    "B-001",
+    "B-002"
+   ],
+   "auto": "B-004",
+   "flagged": false,
+   "flags": []
+  },
+  {
+   "id": "c25",
+   "pred": {
+    "product_type": "necklace",
+    "metal": "gold",
+    "purity": "18k",
+    "stone_type": "none",
+    "stone_count": null,
+    "dimension_mm": 457.2,
+    "finish": null
+   },
+   "oks": {
+    "product_type": true,
+    "metal": true,
+    "purity": true,
+    "stone_type": false,
+    "stone_count": true,
+    "dimension_mm": true,
+    "finish": true
+   },
+   "cand": [
+    "N-001",
+    "N-006",
+    "N-005"
+   ],
+   "auto": "N-001",
+   "flagged": false,
+   "flags": []
+  },
+  {
+   "id": "c26",
+   "pred": {
+    "product_type": "necklace",
+    "metal": "silver",
+    "purity": "925",
+    "stone_type": "none",
+    "stone_count": null,
+    "dimension_mm": 500.0,
+    "finish": "brushed"
+   },
+   "oks": {
+    "product_type": true,
+    "metal": true,
+    "purity": false,
+    "stone_type": false,
+    "stone_count": true,
+    "dimension_mm": true,
+    "finish": true
+   },
+   "cand": [
+    "N-003",
+    "N-006",
+    "N-001"
+   ],
+   "auto": "N-003",
+   "flagged": false,
+   "flags": []
+  },
+  {
+   "id": "c27",
+   "pred": {
+    "product_type": "necklace",
+    "metal": "gold",
+    "purity": "18k",
+    "stone_type": "emerald",
+    "stone_count": null,
+    "dimension_mm": 457.2,
+    "finish": null
+   },
+   "oks": {
+    "product_type": true,
+    "metal": true,
+    "purity": true,
+    "stone_type": true,
+    "stone_count": true,
+    "dimension_mm": true,
+    "finish": true
+   },
+   "cand": [
+    "N-005",
+    "N-001",
+    "N-006"
+   ],
+   "auto": "N-005",
+   "flagged": false,
+   "flags": []
+  },
+  {
+   "id": "c28",
+   "pred": {
+    "product_type": null,
+    "metal": "gold",
+    "purity": null,
+    "stone_type": null,
+    "stone_count": null,
+    "dimension_mm": null,
+    "finish": null
+   },
+   "oks": {
+    "product_type": true,
+    "metal": true,
+    "purity": true,
+    "stone_type": true,
+    "stone_count": true,
+    "dimension_mm": true,
+    "finish": true
+   },
+   "cand": [
+    "B-002",
+    "E-002",
+    "E-003"
+   ],
+   "auto": null,
+   "flagged": true,
+   "flags": [
+    "product_type not determined",
+    "no auto-selection: only 20% of the scoring weight was specified (< 50%); not enough to auto-select"
+   ]
+  },
+  {
+   "id": "c29",
+   "pred": {
+    "product_type": null,
+    "metal": null,
+    "purity": null,
+    "stone_type": null,
+    "stone_count": null,
+    "dimension_mm": null,
+    "finish": null
+   },
+   "oks": {
+    "product_type": true,
+    "metal": true,
+    "purity": true,
+    "stone_type": true,
+    "stone_count": true,
+    "dimension_mm": true,
+    "finish": true
+   },
+   "cand": [],
+   "auto": null,
+   "flagged": true,
+   "flags": [
+    "product_type not determined",
+    "metal not determined",
+    "extraction mode 'empty_default': empty brief and no usable vision model: returned all-unknown default",
+    "empty brief: nothing to analyse"
+   ]
+  },
+  {
+   "id": "c30",
+   "pred": {
+    "product_type": null,
+    "metal": null,
+    "purity": null,
+    "stone_type": null,
+    "stone_count": null,
+    "dimension_mm": null,
+    "finish": null
+   },
+   "oks": {
+    "product_type": true,
+    "metal": true,
+    "purity": true,
+    "stone_type": true,
+    "stone_count": true,
+    "dimension_mm": true,
+    "finish": true
+   },
+   "cand": [],
+   "auto": null,
+   "flagged": true,
+   "flags": [
+    "product_type not determined",
+    "metal not determined"
+   ]
+  },
+  {
+   "id": "c31",
+   "pred": {
+    "product_type": "ring",
+    "metal": "gold",
+    "purity": "18k",
+    "stone_type": "diamond",
+    "stone_count": 1,
+    "dimension_mm": null,
+    "finish": null
+   },
+   "oks": {
+    "product_type": true,
+    "metal": true,
+    "purity": true,
+    "stone_type": true,
+    "stone_count": true,
+    "dimension_mm": true,
+    "finish": true
+   },
+   "cand": [
+    "R-001",
+    "R-003",
+    "R-002"
+   ],
+   "auto": "R-001",
+   "flagged": false,
+   "flags": []
+  },
+  {
+   "id": "c32",
+   "pred": {
+    "product_type": "ring",
+    "metal": "gold",
+    "purity": null,
+    "stone_type": null,
+    "stone_count": 14,
+    "dimension_mm": null,
+    "finish": null
+   },
+   "oks": {
+    "product_type": true,
+    "metal": false,
+    "purity": true,
+    "stone_type": true,
+    "stone_count": false,
+    "dimension_mm": true,
+    "finish": true
+   },
+   "cand": [
+    "R-003",
+    "R-002",
+    "R-001"
+   ],
+   "auto": "R-003",
+   "flagged": false,
+   "flags": []
+  },
+  {
+   "id": "c33",
+   "pred": {
+    "product_type": "bracelet",
+    "metal": "silver",
+    "purity": "925",
+    "stone_type": null,
+    "stone_count": 16,
+    "dimension_mm": null,
+    "finish": null
+   },
+   "oks": {
+    "product_type": true,
+    "metal": true,
+    "purity": false,
+    "stone_type": true,
+    "stone_count": false,
+    "dimension_mm": true,
+    "finish": true
+   },
+   "cand": [
+    "B-006",
+    "B-003",
+    "B-005"
+   ],
+   "auto": null,
+   "flagged": true,
+   "flags": [
+    "low-confidence image count: detectors disagree: Hough=16 vs contour=0",
+    "low confidence: from image only (detectors disagree: Hough=16 vs contour=0)",
+    "auto-select withheld: low-confidence field used in match"
+   ]
+  },
+  {
+   "id": "c34",
+   "pred": {
+    "product_type": "ring",
+    "metal": "gold",
+    "purity": "18k",
+    "stone_type": null,
+    "stone_count": null,
+    "dimension_mm": 45.0,
+    "finish": null
+   },
+   "oks": {
+    "product_type": true,
+    "metal": true,
+    "purity": true,
+    "stone_type": true,
+    "stone_count": true,
+    "dimension_mm": true,
+    "finish": true
+   },
+   "cand": [
+    "R-001",
+    "R-004",
+    "R-003"
+   ],
+   "auto": null,
+   "flagged": true,
+   "flags": [
+    "45.0 mm is outside the plausible range 10-30 mm for a ring",
+    "no auto-selection: top two candidates too close (lead 0.000 < 0.04)"
+   ]
+  },
+  {
+   "id": "n01",
+   "pred": {
+    "product_type": "ring",
+    "metal": "rose_gold",
+    "purity": null,
+    "stone_type": "diamond",
+    "stone_count": null,
+    "dimension_mm": 16.5,
+    "finish": null
+   },
+   "oks": {
+    "product_type": true,
+    "metal": true,
+    "purity": true,
+    "stone_type": true,
+    "stone_count": true,
+    "dimension_mm": true,
+    "finish": true
+   },
+   "cand": [
+    "R-012",
+    "R-001",
+    "R-003"
+   ],
+   "auto": "R-012",
+   "flagged": false,
+   "flags": []
+  },
+  {
+   "id": "n02",
+   "pred": {
+    "product_type": "earrings",
+    "metal": "silver",
+    "purity": "925",
+    "stone_type": "cubic_zirconia",
+    "stone_count": null,
+    "dimension_mm": 6.0,
+    "finish": null
+   },
+   "oks": {
+    "product_type": true,
+    "metal": true,
+    "purity": true,
+    "stone_type": true,
+    "stone_count": false,
+    "dimension_mm": true,
+    "finish": true
+   },
+   "cand": [
+    "E-005",
+    "E-004",
+    "E-006"
+   ],
+   "auto": "E-005",
+   "flagged": false,
+   "flags": []
+  },
+  {
+   "id": "n03",
+   "pred": {
+    "product_type": "necklace",
+    "metal": "gold",
+    "purity": null,
+    "stone_type": "none",
+    "stone_count": null,
+    "dimension_mm": 450.0,
+    "finish": null
+   },
+   "oks": {
+    "product_type": true,
+    "metal": true,
+    "purity": true,
+    "stone_type": false,
+    "stone_count": true,
+    "dimension_mm": true,
+    "finish": true
+   },
+   "cand": [
+    "N-001",
+    "N-006",
+    "N-005"
+   ],
+   "auto": "N-001",
+   "flagged": false,
+   "flags": []
+  },
+  {
+   "id": "n04",
+   "pred": {
+    "product_type": "ring",
+    "metal": "platinum",
+    "purity": null,
+    "stone_type": "diamond",
+    "stone_count": 1,
+    "dimension_mm": null,
+    "finish": null
+   },
+   "oks": {
+    "product_type": true,
+    "metal": true,
+    "purity": true,
+    "stone_type": true,
+    "stone_count": true,
+    "dimension_mm": true,
+    "finish": true
+   },
+   "cand": [
+    "R-011",
+    "R-007",
+    "R-001"
+   ],
+   "auto": "R-011",
+   "flagged": false,
+   "flags": []
+  },
+  {
+   "id": "n05",
+   "pred": {
+    "product_type": "pendant",
+    "metal": "rose_gold",
+    "purity": "14k",
+    "stone_type": "diamond",
+    "stone_count": 10,
+    "dimension_mm": null,
+    "finish": null
+   },
+   "oks": {
+    "product_type": true,
+    "metal": true,
+    "purity": true,
+    "stone_type": true,
+    "stone_count": true,
+    "dimension_mm": true,
+    "finish": true
+   },
+   "cand": [
+    "P-008",
+    "P-001",
+    "P-002"
+   ],
+   "auto": null,
+   "flagged": true,
+   "flags": [
+    "extraction mode 'rules_fallback': call failed: gemini/gemini-3.5-flash: Client error '429 Too Many Requests' for url 'https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429; call failed: gemini/gemini-3.1-flash-lite: Server error '503 Service Unavailable' for url 'https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite:generateContent'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/503; all LLM attempts failed; degraded to keyword rules",
+    "no auto-selection: best candidate P-008 is not an exact match on ['metal']; needs a human decision"
+   ]
+  },
+  {
+   "id": "n06",
+   "pred": {
+    "product_type": "bracelet",
+    "metal": "silver",
+    "purity": "925",
+    "stone_type": "none",
+    "stone_count": 0,
+    "dimension_mm": 190.5,
+    "finish": "hammered"
+   },
+   "oks": {
+    "product_type": true,
+    "metal": true,
+    "purity": false,
+    "stone_type": true,
+    "stone_count": true,
+    "dimension_mm": true,
+    "finish": true
+   },
+   "cand": [
+    "B-003",
+    "B-005",
+    "B-006"
+   ],
+   "auto": null,
+   "flagged": true,
+   "flags": [
+    "no auto-selection: best candidate B-003 is not an exact match on ['finish']; needs a human decision"
+   ]
+  },
+  {
+   "id": "n07",
+   "pred": {
+    "product_type": "ring",
+    "metal": "white_gold",
+    "purity": "18k",
+    "stone_type": "sapphire",
+    "stone_count": 3,
+    "dimension_mm": 18.89,
+    "finish": null
+   },
+   "oks": {
+    "product_type": true,
+    "metal": true,
+    "purity": true,
+    "stone_type": true,
+    "stone_count": true,
+    "dimension_mm": true,
+    "finish": true
+   },
+   "cand": [
+    "R-008",
+    "R-002",
+    "R-006"
+   ],
+   "auto": null,
+   "flagged": true,
+   "flags": [
+    "no auto-selection: best candidate R-008 is not an exact match on ['purity']; needs a human decision"
+   ]
+  },
+  {
+   "id": "n08",
+   "pred": {
+    "product_type": "bracelet",
+    "metal": "silver",
+    "purity": null,
+    "stone_type": "none",
+    "stone_count": null,
+    "dimension_mm": 60.0,
+    "finish": "hammered"
+   },
+   "oks": {
+    "product_type": true,
+    "metal": true,
+    "purity": true,
+    "stone_type": false,
+    "stone_count": true,
+    "dimension_mm": true,
+    "finish": true
+   },
+   "cand": [
+    "B-005",
+    "B-003",
+    "B-002"
+   ],
+   "auto": "B-005",
+   "flagged": false,
+   "flags": []
+  },
+  {
+   "id": "n09",
+   "pred": {
+    "product_type": "ring",
+    "metal": "gold",
+    "purity": "18k",
+    "stone_type": "none",
+    "stone_count": null,
+    "dimension_mm": 2.0,
+    "finish": "polished"
+   },
+   "oks": {
+    "product_type": true,
+    "metal": true,
+    "purity": true,
+    "stone_type": true,
+    "stone_count": false,
+    "dimension_mm": false,
+    "finish": false
+   },
+   "cand": [
+    "R-004",
+    "R-001",
+    "R-003"
+   ],
+   "auto": null,
+   "flagged": true,
+   "flags": [
+    "2.0 mm is outside the plausible range 10-30 mm for a ring",
+    "no auto-selection: best score 0.83 below auto-select threshold 0.85"
+   ]
+  },
+  {
+   "id": "n10",
+   "pred": {
+    "product_type": "ring",
+    "metal": null,
+    "purity": null,
+    "stone_type": "sapphire",
+    "stone_count": null,
+    "dimension_mm": null,
+    "finish": null
+   },
+   "oks": {
+    "product_type": true,
+    "metal": true,
+    "purity": true,
+    "stone_type": true,
+    "stone_count": true,
+    "dimension_mm": true,
+    "finish": true
+   },
+   "cand": [
+    "R-008",
+    "R-001",
+    "R-002"
+   ],
+   "auto": null,
+   "flagged": true,
+   "flags": [
+    "metal not determined",
+    "no auto-selection: only 45% of the scoring weight was specified (< 50%); not enough to auto-select"
+   ]
+  }
+ ]
+}

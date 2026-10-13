@@ -1,0 +1,851 @@
+[
+ {
+  "id": "c01",
+  "brief": "Need an 18k yellow gold solitaire ring with a single diamond, polished, ring size 7",
+  "expected": {
+   "product_type": "ring",
+   "metal": "gold",
+   "purity": "18k",
+   "stone_type": "diamond",
+   "stone_count": 1,
+   "dimension_mm": 17.3,
+   "finish": "polished"
+  },
+  "expected_sku": "R-001",
+  "image": null,
+  "true_count": null,
+  "expect_review": false,
+  "note": "clean, ring size conversion",
+  "group": "core"
+ },
+ {
+  "id": "c02",
+  "brief": "White gold halo ring, 18k, 13 diamonds around the centre stone, polished finish, about 19mm",
+  "expected": {
+   "product_type": "ring",
+   "metal": "white_gold",
+   "purity": "18k",
+   "stone_type": "diamond",
+   "stone_count": 13,
+   "dimension_mm": 19,
+   "finish": "polished"
+  },
+  "expected_sku": "R-002",
+  "image": "images/c02_halo_13_easy.jpg",
+  "true_count": 13,
+  "expect_review": false,
+  "note": "halo, brief+image agree",
+  "group": "core",
+  "image_difficulty": "easy"
+ },
+ {
+  "id": "c03",
+  "brief": "Pave band ring in 14k gold with 24 diamonds",
+  "expected": {
+   "product_type": "ring",
+   "metal": "gold",
+   "purity": "14k",
+   "stone_type": "diamond",
+   "stone_count": 24,
+   "dimension_mm": null,
+   "finish": null
+  },
+  "expected_sku": "R-003",
+  "image": "images/c03_arc_24_medium.jpg",
+  "true_count": 24,
+  "expect_review": false,
+  "note": "dense arc",
+  "group": "core",
+  "image_difficulty": "medium"
+ },
+ {
+  "id": "c04",
+  "brief": "plain matte gold band 18k, no stones, size 7",
+  "expected": {
+   "product_type": "ring",
+   "metal": "gold",
+   "purity": "18k",
+   "stone_type": "none",
+   "stone_count": 0,
+   "dimension_mm": 17.3,
+   "finish": "matte"
+  },
+  "expected_sku": "R-004",
+  "image": null,
+  "true_count": null,
+  "expect_review": false,
+  "note": "explicit no stones",
+  "group": "core"
+ },
+ {
+  "id": "c05",
+  "brief": "sterling silver stacking ring, brushed finish, no stones",
+  "expected": {
+   "product_type": "ring",
+   "metal": "silver",
+   "purity": "925",
+   "stone_type": "none",
+   "stone_count": 0,
+   "dimension_mm": null,
+   "finish": "brushed"
+  },
+  "expected_sku": "R-005",
+  "image": null,
+  "true_count": null,
+  "expect_review": false,
+  "note": "sterling -> 925",
+  "group": "core"
+ },
+ {
+  "id": "c06",
+  "brief": "Rose gold trilogy ring with three rubies, 18k",
+  "expected": {
+   "product_type": "ring",
+   "metal": "rose_gold",
+   "purity": "18k",
+   "stone_type": "ruby",
+   "stone_count": 3,
+   "dimension_mm": null,
+   "finish": null
+  },
+  "expected_sku": "R-006",
+  "image": null,
+  "true_count": null,
+  "expect_review": false,
+  "note": "trilogy",
+  "group": "core"
+ },
+ {
+  "id": "c07",
+  "brief": "platinum ring with an emerald solitaire",
+  "expected": {
+   "product_type": "ring",
+   "metal": "platinum",
+   "purity": null,
+   "stone_type": "emerald",
+   "stone_count": 1,
+   "dimension_mm": null,
+   "finish": null
+  },
+  "expected_sku": "R-007",
+  "image": "images/c07_cluster_1_easy.jpg",
+  "true_count": 1,
+  "expect_review": false,
+  "note": "single stone image",
+  "group": "core",
+  "image_difficulty": "easy"
+ },
+ {
+  "id": "c08",
+  "brief": "Cluster ring, white gold 14k, seven sapphires",
+  "expected": {
+   "product_type": "ring",
+   "metal": "white_gold",
+   "purity": "14k",
+   "stone_type": "sapphire",
+   "stone_count": 7,
+   "dimension_mm": null,
+   "finish": null
+  },
+  "expected_sku": "R-008",
+  "image": "images/c08_cluster_7_medium.jpg",
+  "true_count": 7,
+  "expect_review": false,
+  "note": "number word",
+  "group": "core",
+  "image_difficulty": "medium"
+ },
+ {
+  "id": "c09",
+  "brief": "silver cocktail ring with 9 cz stones, polished",
+  "expected": {
+   "product_type": "ring",
+   "metal": "silver",
+   "purity": null,
+   "stone_type": "cubic_zirconia",
+   "stone_count": 9,
+   "dimension_mm": null,
+   "finish": "polished"
+  },
+  "expected_sku": "R-009",
+  "image": "images/c09_cluster_9_hard.jpg",
+  "true_count": 9,
+  "expect_review": false,
+  "note": "cz abbreviation, hard image",
+  "group": "core",
+  "image_difficulty": "hard"
+ },
+ {
+  "id": "c10",
+  "brief": "hammered silver band",
+  "expected": {
+   "product_type": "ring",
+   "metal": "silver",
+   "purity": null,
+   "stone_type": null,
+   "stone_count": null,
+   "dimension_mm": null,
+   "finish": "hammered"
+  },
+  "expected_sku": "R-010",
+  "image": null,
+  "true_count": null,
+  "expect_review": false,
+  "note": "stones not stated -> null (extract only what is said)",
+  "group": "core"
+ },
+ {
+  "id": "c11",
+  "brief": "Platinum eternity band with 20 diamonds all the way round, 17mm",
+  "expected": {
+   "product_type": "ring",
+   "metal": "platinum",
+   "purity": null,
+   "stone_type": "diamond",
+   "stone_count": 20,
+   "dimension_mm": 17,
+   "finish": null
+  },
+  "expected_sku": "R-011",
+  "image": "images/c11_arc_20_medium.jpg",
+  "true_count": 20,
+  "expect_review": false,
+  "note": "eternity",
+  "group": "core",
+  "image_difficulty": "medium"
+ },
+ {
+  "id": "c12",
+  "brief": "gold pendant with a teardrop diamond, 18k, 15 mm tall",
+  "expected": {
+   "product_type": "pendant",
+   "metal": "gold",
+   "purity": "18k",
+   "stone_type": "diamond",
+   "stone_count": null,
+   "dimension_mm": 15,
+   "finish": null
+  },
+  "expected_sku": "P-001",
+  "image": null,
+  "true_count": null,
+  "expect_review": false,
+  "note": "count not stated",
+  "group": "core"
+ },
+ {
+  "id": "c13",
+  "brief": "heart shaped ruby pendant in 14k rose gold",
+  "expected": {
+   "product_type": "pendant",
+   "metal": "rose_gold",
+   "purity": "14k",
+   "stone_type": "ruby",
+   "stone_count": 1,
+   "dimension_mm": null,
+   "finish": null
+  },
+  "expected_sku": "P-002",
+  "image": "images/c13_cluster_1_easy.jpg",
+  "true_count": 1,
+  "expect_review": false,
+  "note": "count only available from the image",
+  "group": "core",
+  "image_difficulty": "easy"
+ },
+ {
+  "id": "c14",
+  "brief": "silver initial disc pendant, brushed, 20mm",
+  "expected": {
+   "product_type": "pendant",
+   "metal": "silver",
+   "purity": null,
+   "stone_type": null,
+   "stone_count": null,
+   "dimension_mm": 20,
+   "finish": "brushed"
+  },
+  "expected_sku": "P-003",
+  "image": null,
+  "true_count": null,
+  "expect_review": false,
+  "note": "",
+  "group": "core"
+ },
+ {
+  "id": "c15",
+  "brief": "18k gold emerald drop pendant 16mm",
+  "expected": {
+   "product_type": "pendant",
+   "metal": "gold",
+   "purity": "18k",
+   "stone_type": "emerald",
+   "stone_count": null,
+   "dimension_mm": 16,
+   "finish": null
+  },
+  "expected_sku": "P-004",
+  "image": null,
+  "true_count": null,
+  "expect_review": false,
+  "note": "",
+  "group": "core"
+ },
+ {
+  "id": "c16",
+  "brief": "Pendant, 18k white gold, sapphire halo, nine sapphires",
+  "expected": {
+   "product_type": "pendant",
+   "metal": "white_gold",
+   "purity": "18k",
+   "stone_type": "sapphire",
+   "stone_count": 9,
+   "dimension_mm": null,
+   "finish": null
+  },
+  "expected_sku": "P-005",
+  "image": "images/c16_halo_9_medium.jpg",
+  "true_count": 9,
+  "expect_review": false,
+  "note": "halo",
+  "group": "core",
+  "image_difficulty": "medium"
+ },
+ {
+  "id": "c17",
+  "brief": "silver star pendant set with 5 cubic zirconia",
+  "expected": {
+   "product_type": "pendant",
+   "metal": "silver",
+   "purity": null,
+   "stone_type": "cubic_zirconia",
+   "stone_count": 5,
+   "dimension_mm": null,
+   "finish": null
+  },
+  "expected_sku": "P-006",
+  "image": "images/c17_cluster_5_easy.jpg",
+  "true_count": 5,
+  "expect_review": false,
+  "note": "multiword stone name",
+  "group": "core",
+  "image_difficulty": "easy"
+ },
+ {
+  "id": "c18",
+  "brief": "pair of diamond stud earrings in 14k white gold, 5mm",
+  "expected": {
+   "product_type": "earrings",
+   "metal": "white_gold",
+   "purity": "14k",
+   "stone_type": "diamond",
+   "stone_count": 2,
+   "dimension_mm": 5,
+   "finish": null
+  },
+  "expected_sku": "E-001",
+  "image": null,
+  "true_count": null,
+  "expect_review": false,
+  "note": "pair -> 2",
+  "group": "core"
+ },
+ {
+  "id": "c19",
+  "brief": "18k gold hoops, 25mm, plain polished",
+  "expected": {
+   "product_type": "earrings",
+   "metal": "gold",
+   "purity": "18k",
+   "stone_type": "none",
+   "stone_count": 0,
+   "dimension_mm": 25,
+   "finish": "polished"
+  },
+  "expected_sku": "E-002",
+  "image": null,
+  "true_count": null,
+  "expect_review": false,
+  "note": "plain -> none",
+  "group": "core"
+ },
+ {
+  "id": "c20",
+  "brief": "ruby drop earrings in 18k gold",
+  "expected": {
+   "product_type": "earrings",
+   "metal": "gold",
+   "purity": "18k",
+   "stone_type": "ruby",
+   "stone_count": null,
+   "dimension_mm": null,
+   "finish": null
+  },
+  "expected_sku": "E-003",
+  "image": null,
+  "true_count": null,
+  "expect_review": false,
+  "note": "",
+  "group": "core"
+ },
+ {
+  "id": "c21",
+  "brief": "Tennis bracelet white gold 14k with about 45 diamonds, 7 inch",
+  "expected": {
+   "product_type": "bracelet",
+   "metal": "white_gold",
+   "purity": "14k",
+   "stone_type": "diamond",
+   "stone_count": 45,
+   "dimension_mm": 177.8,
+   "finish": null
+  },
+  "expected_sku": "B-001",
+  "image": "images/c21_row_32_hard.jpg",
+  "true_count": 32,
+  "expect_review": true,
+  "note": "brief says 45 but photo has 32 -> must flag",
+  "group": "core",
+  "image_difficulty": "hard"
+ },
+ {
+  "id": "c22",
+  "brief": "gold bangle 18k 65mm",
+  "expected": {
+   "product_type": "bracelet",
+   "metal": "gold",
+   "purity": "18k",
+   "stone_type": null,
+   "stone_count": null,
+   "dimension_mm": 65,
+   "finish": null
+  },
+  "expected_sku": "B-002",
+  "image": null,
+  "true_count": null,
+  "expect_review": false,
+  "note": "",
+  "group": "core"
+ },
+ {
+  "id": "c23",
+  "brief": "silver chain bracelet 190mm",
+  "expected": {
+   "product_type": "bracelet",
+   "metal": "silver",
+   "purity": null,
+   "stone_type": null,
+   "stone_count": null,
+   "dimension_mm": 190,
+   "finish": null
+  },
+  "expected_sku": "B-003",
+  "image": null,
+  "true_count": null,
+  "expect_review": false,
+  "note": "'chain' vs 'bracelet' noun clash",
+  "group": "core"
+ },
+ {
+  "id": "c24",
+  "brief": "ruby tennis bracelet rose gold 18k, 30 rubies",
+  "expected": {
+   "product_type": "bracelet",
+   "metal": "rose_gold",
+   "purity": "18k",
+   "stone_type": "ruby",
+   "stone_count": 30,
+   "dimension_mm": null,
+   "finish": null
+  },
+  "expected_sku": "B-004",
+  "image": "images/c24_row_30_hard.jpg",
+  "true_count": 30,
+  "expect_review": false,
+  "note": "dense row, hard",
+  "group": "core",
+  "image_difficulty": "hard"
+ },
+ {
+  "id": "c25",
+  "brief": "18 inch 18k gold chain necklace",
+  "expected": {
+   "product_type": "necklace",
+   "metal": "gold",
+   "purity": "18k",
+   "stone_type": null,
+   "stone_count": null,
+   "dimension_mm": 457.2,
+   "finish": null
+  },
+  "expected_sku": "N-001",
+  "image": null,
+  "true_count": null,
+  "expect_review": false,
+  "note": "",
+  "group": "core"
+ },
+ {
+  "id": "c26",
+  "brief": "silver rope chain 500mm brushed",
+  "expected": {
+   "product_type": "necklace",
+   "metal": "silver",
+   "purity": null,
+   "stone_type": null,
+   "stone_count": null,
+   "dimension_mm": 500,
+   "finish": "brushed"
+  },
+  "expected_sku": "N-003",
+  "image": null,
+  "true_count": null,
+  "expect_review": false,
+  "note": "",
+  "group": "core"
+ },
+ {
+  "id": "c27",
+  "brief": "emerald pendant necklace gold 18k 18 inch",
+  "expected": {
+   "product_type": "necklace",
+   "metal": "gold",
+   "purity": "18k",
+   "stone_type": "emerald",
+   "stone_count": null,
+   "dimension_mm": 457.2,
+   "finish": null
+  },
+  "expected_sku": "N-005",
+  "image": null,
+  "true_count": null,
+  "expect_review": false,
+  "note": "ambiguous product noun",
+  "group": "core"
+ },
+ {
+  "id": "c28",
+  "brief": "something nice for my wife, maybe gold?",
+  "expected": {
+   "product_type": null,
+   "metal": "gold",
+   "purity": null,
+   "stone_type": null,
+   "stone_count": null,
+   "dimension_mm": null,
+   "finish": null
+  },
+  "expected_sku": null,
+  "image": null,
+  "true_count": null,
+  "expect_review": true,
+  "note": "vague -> must flag",
+  "group": "core"
+ },
+ {
+  "id": "c29",
+  "brief": "",
+  "expected": {
+   "product_type": null,
+   "metal": null,
+   "purity": null,
+   "stone_type": null,
+   "stone_count": null,
+   "dimension_mm": null,
+   "finish": null
+  },
+  "expected_sku": null,
+  "image": null,
+  "true_count": null,
+  "expect_review": true,
+  "note": "empty brief",
+  "group": "core"
+ },
+ {
+  "id": "c30",
+  "brief": "asdf qwerty 12345",
+  "expected": {
+   "product_type": null,
+   "metal": null,
+   "purity": null,
+   "stone_type": null,
+   "stone_count": null,
+   "dimension_mm": null,
+   "finish": null
+  },
+  "expected_sku": null,
+  "image": null,
+  "true_count": null,
+  "expect_review": true,
+  "note": "garbage",
+  "group": "core"
+ },
+ {
+  "id": "c31",
+  "brief": "dimond solitare ring, 18k yelow gold",
+  "expected": {
+   "product_type": "ring",
+   "metal": "gold",
+   "purity": "18k",
+   "stone_type": "diamond",
+   "stone_count": 1,
+   "dimension_mm": null,
+   "finish": null
+  },
+  "expected_sku": "R-001",
+  "image": null,
+  "true_count": null,
+  "expect_review": false,
+  "note": "typos",
+  "group": "core"
+ },
+ {
+  "id": "c32",
+  "brief": "ring with stones, see photo",
+  "expected": {
+   "product_type": "ring",
+   "metal": null,
+   "purity": null,
+   "stone_type": null,
+   "stone_count": 15,
+   "dimension_mm": null,
+   "finish": null
+  },
+  "expected_sku": null,
+  "image": "images/c32_cluster_15_medium.jpg",
+  "true_count": 15,
+  "expect_review": true,
+  "note": "image-only count",
+  "group": "core",
+  "image_difficulty": "medium"
+ },
+ {
+  "id": "c33",
+  "brief": "silver tennis bracelet, lots of tiny stones, photo attached",
+  "expected": {
+   "product_type": "bracelet",
+   "metal": "silver",
+   "purity": null,
+   "stone_type": null,
+   "stone_count": 45,
+   "dimension_mm": null,
+   "finish": null
+  },
+  "expected_sku": null,
+  "image": "images/c33_row_45_easy.jpg",
+  "true_count": 45,
+  "expect_review": true,
+  "note": "dense: CV baseline should not be trusted",
+  "group": "core",
+  "image_difficulty": "easy"
+ },
+ {
+  "id": "c34",
+  "brief": "18k gold ring, 45mm diameter",
+  "expected": {
+   "product_type": "ring",
+   "metal": "gold",
+   "purity": "18k",
+   "stone_type": null,
+   "stone_count": null,
+   "dimension_mm": 45,
+   "finish": null
+  },
+  "expected_sku": null,
+  "image": null,
+  "true_count": null,
+  "expect_review": true,
+  "note": "implausible dimension for a ring -> must flag",
+  "group": "core"
+ },
+ {
+  "id": "n01",
+  "brief": "Client wants a delicate band, kind of rose-gold coloured, with tiny diamonds going all the way around. Roughly size 6.",
+  "expected": {
+   "product_type": "ring",
+   "metal": "rose_gold",
+   "purity": null,
+   "stone_type": "diamond",
+   "stone_count": null,
+   "dimension_mm": 16.5,
+   "finish": null
+  },
+  "expected_sku": "R-012",
+  "image": null,
+  "true_count": null,
+  "expect_review": true,
+  "note": "colloquial; count unspecified",
+  "group": "natural"
+ },
+ {
+  "id": "n02",
+  "brief": "Looking for studs, 6mm, cubic zirconia, sterling.",
+  "expected": {
+   "product_type": "earrings",
+   "metal": "silver",
+   "purity": "925",
+   "stone_type": "cubic_zirconia",
+   "stone_count": 2,
+   "dimension_mm": 6,
+   "finish": null
+  },
+  "expected_sku": "E-005",
+  "image": null,
+  "true_count": null,
+  "expect_review": false,
+  "note": "",
+  "group": "natural"
+ },
+ {
+  "id": "n03",
+  "brief": "Gift for mum: a gold necklace, around 45cm, nothing fancy",
+  "expected": {
+   "product_type": "necklace",
+   "metal": "gold",
+   "purity": null,
+   "stone_type": null,
+   "stone_count": null,
+   "dimension_mm": 450,
+   "finish": null
+  },
+  "expected_sku": "N-001",
+  "image": null,
+  "true_count": null,
+  "expect_review": false,
+  "note": "'nothing fancy' != no stones",
+  "group": "natural"
+ },
+ {
+  "id": "n04",
+  "brief": "Need a 1ct round brilliant on a platinum band.",
+  "expected": {
+   "product_type": "ring",
+   "metal": "platinum",
+   "purity": null,
+   "stone_type": "diamond",
+   "stone_count": 1,
+   "dimension_mm": null,
+   "finish": null
+  },
+  "expected_sku": null,
+  "image": null,
+  "true_count": null,
+  "expect_review": true,
+  "note": "'brilliant' implies diamond; needs world knowledge",
+  "group": "natural"
+ },
+ {
+  "id": "n05",
+  "brief": "ten diamonds, rose gold, 14K, pendent",
+  "expected": {
+   "product_type": "pendant",
+   "metal": "rose_gold",
+   "purity": "14k",
+   "stone_type": "diamond",
+   "stone_count": 10,
+   "dimension_mm": null,
+   "finish": null
+  },
+  "expected_sku": null,
+  "image": null,
+  "true_count": null,
+  "expect_review": true,
+  "note": "typo + number word; no exact inventory match",
+  "group": "natural"
+ },
+ {
+  "id": "n06",
+  "brief": "Bracelet, silver, 7.5in, hammered, no gems",
+  "expected": {
+   "product_type": "bracelet",
+   "metal": "silver",
+   "purity": null,
+   "stone_type": "none",
+   "stone_count": 0,
+   "dimension_mm": 190.5,
+   "finish": "hammered"
+  },
+  "expected_sku": null,
+  "image": null,
+  "true_count": null,
+  "expect_review": true,
+  "note": "no inventory item has all of these",
+  "group": "natural"
+ },
+ {
+  "id": "n07",
+  "brief": "18k white gold, size 9, three-stone with sapphires",
+  "expected": {
+   "product_type": "ring",
+   "metal": "white_gold",
+   "purity": "18k",
+   "stone_type": "sapphire",
+   "stone_count": 3,
+   "dimension_mm": 18.9,
+   "finish": null
+  },
+  "expected_sku": null,
+  "image": null,
+  "true_count": null,
+  "expect_review": true,
+  "note": "product noun missing; 'size 9' implies ring",
+  "group": "natural"
+ },
+ {
+  "id": "n08",
+  "brief": "pls quote: big statement cuff, hammered silver, approx 6cm wide",
+  "expected": {
+   "product_type": "bracelet",
+   "metal": "silver",
+   "purity": null,
+   "stone_type": null,
+   "stone_count": null,
+   "dimension_mm": 60,
+   "finish": "hammered"
+  },
+  "expected_sku": "B-005",
+  "image": null,
+  "true_count": null,
+  "expect_review": false,
+  "note": "",
+  "group": "natural"
+ },
+ {
+  "id": "n09",
+  "brief": "Ring, 18ct yellow gold, plain, 2 mm band",
+  "expected": {
+   "product_type": "ring",
+   "metal": "gold",
+   "purity": "18k",
+   "stone_type": "none",
+   "stone_count": 0,
+   "dimension_mm": null,
+   "finish": null
+  },
+  "expected_sku": "R-004",
+  "image": null,
+  "true_count": null,
+  "expect_review": true,
+  "note": "2 mm is band width, not the ring diameter",
+  "group": "natural"
+ },
+ {
+  "id": "n10",
+  "brief": "Do you have anything like a halo ring with sapphires? Budget around $1500",
+  "expected": {
+   "product_type": "ring",
+   "metal": null,
+   "purity": null,
+   "stone_type": "sapphire",
+   "stone_count": null,
+   "dimension_mm": null,
+   "finish": null
+  },
+  "expected_sku": null,
+  "image": null,
+  "true_count": null,
+  "expect_review": true,
+  "note": "under-specified",
+  "group": "natural"
+ }
+]

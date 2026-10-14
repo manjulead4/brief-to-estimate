@@ -1,89 +1,92 @@
 # Brief to Priced Estimate
 
-A FastAPI service that turns a short sales brief (+ optional reference photo) for a custom **jewelry** piece into
-a validated spec, a deterministic inventory match, an image-based stone count, and per-field confidence with
-human-review flags. Domain: jewelry (rings, pendants, earrings, bracelets, necklaces); the measurable quantity from the
-image is **the number of small stones**.
+This is my submission for the "Brief to Priced Estimate" task. A sales rep sends a short brief and maybe a photo of a custom piece. The service turns that into a structured spec, matches it against a small inventory, estimates a quantity from the photo, and says how sure it is about each answer.
 
-Design goal: *a service that knows when it is unsure*, not a polished demo.
+I picked **jewelry** (rings, pendants, earrings, bracelets, necklaces). The quantity I estimate from the photo is the **number of small stones**.
 
-## Run it
+The goal I kept in mind was a service that knows when it is unsure, so a lot of the work went into flags and the evaluation rather than into the happy path.
+
+## Running it
 
 ```bash
 python3 -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
-cp .env.example .env            # optional; default LLM_PROVIDER=none runs fully offline
-uvicorn app.main:app --reload   # http://localhost:8000/docs
-curl -F 'brief=18k gold solitaire ring, single diamond, size 7' -F 'image=@data/testset/images/c07_cluster_1_easy.jpg' localhost:8000/analyze
+uvicorn app.main:app --reload      # docs at http://localhost:8000/docs
 ```
 
-Docker: `docker compose up --build` (Dockerfile/compose are written but I did not build the image in this environment).
+It runs with no API key at all (it falls back to keyword rules). Example call:
 
-Tests: `python -m pytest -q`  (30 tests: matcher, malformed model output, CV, API).
-Evaluation: `python eval/build_testset.py && python eval/run_eval.py` (add `--vlm` with an API key to also score a vision-LLM count).
+```bash
+curl -F 'brief=18k gold solitaire ring, single diamond, size 7' \
+     -F 'image=@data/testset/images/c07_cluster_1_easy.jpg' \
+     localhost:8000/analyze
+```
 
-### Configuration (environment variables only; nothing is hardcoded or committed)
-| var | meaning |
+Tests: `python -m pytest -q`
+
+Evaluation: `python eval/build_testset.py && python eval/run_eval.py` (add `--vlm` if a key is set, to also ask the model to count stones in the image).
+
+There is a Dockerfile and docker-compose.yml. I wrote them but did not build the image here, so treat them as untested.
+
+### Settings
+
+Everything comes from environment variables, nothing is hardcoded. Copy `.env.example` to `.env` (it is gitignored).
+
+| variable | what it does |
 |---|---|
-| `LLM_PROVIDER` | `anthropic` \| `openai` \| `gemini` \| `none` (default `none` = keyword-rules only) |
-| `LLM_MODEL`, `LLM_FALLBACK_MODEL` | primary and fallback model (provider defaults exist; override freely) |
-| `ANTHROPIC_API_KEY` / `OPENAI_API_KEY` / `GEMINI_API_KEY` | key for the chosen provider |
-| `LLM_PRICE_IN_PER_MTOK`, `LLM_PRICE_OUT_PER_MTOK` | optional; enables per-request cost in the log/response |
+| `LLM_PROVIDER` | `anthropic`, `openai`, `gemini` or `none` (default `none`) |
+| `LLM_MODEL`, `LLM_FALLBACK_MODEL` | primary model and the one to try if it fails |
+| `ANTHROPIC_API_KEY`, `OPENAI_API_KEY`, `GEMINI_API_KEY` | key for the chosen provider |
+| `LLM_PRICE_IN_PER_MTOK`, `LLM_PRICE_OUT_PER_MTOK` | optional, turns on per-request cost logging |
 
-## API
-`POST /analyze` (multipart): `brief` (text), `image` (optional file), `use_vlm` (optional bool).
-Response (abridged): `extraction{mode,notes,model,latency_ms,cost_usd}`, `spec{field:{value,confidence,reason,source}}`,
-`matches{auto_selected,reason,candidates[top-3 with score breakdown]}`, `image_estimate{count,confidence,reason,methods}`,
-`needs_review`, `flags[{field,severity,message}]`, `timings_ms`. Each request also writes one log line with latency, model, cost and outcome.
+Model names go stale quickly. The Gemini defaults I first wrote were already retired when I tried them (404), so check the names against your provider.
 
-## Design
+## The endpoint
 
-**1. Extraction (`app/extractor.py`, `app/llm.py`).** The LLM returns a JSON object; Pydantic validates it. A degradation
-ladder guarantees an answer, and `extraction.mode` says which rung was used:
-`llm` -> `llm_repaired` (fences/prose/trailing commas/single quotes fixed, or invalid fields dropped to null) -> `llm_retry`
-(one retry with a corrective prompt) -> fallback model -> `rules_fallback` (deterministic keyword reader) -> `empty_default` (all-unknown, flagged).
-Transport errors skip the retry and go straight to the fallback model.
-*Confidence is not taken from the model.* It is computed by cross-checking each LLM value against the keyword reader on the brief:
-agreement -> high, no textual support -> medium, contradiction -> low. A repaired/retried reply caps confidence at medium.
+`POST /analyze` takes multipart form data: `brief` (text), `image` (optional file) and `use_vlm` (optional).
 
-**2. Matching (`app/matcher.py`).** Weighted score over only the attributes the brief specifies (weights and similarity tables are documented at the top of the file).
-Ties break on SKU, so identical input always gives an identical ranking (tested). Auto-select needs score >= 0.85, a lead >= 0.04 over #2,
->= 50% of the weight specified, **and an exact match on every specified categorical attribute** (type, metal, purity, stone, finish).
-*Why not the LLM:* ranking must be reproducible and auditable (a sales rep must be able to see exactly why SKU X beat SKU Y, and the same brief must not
-produce a different quote tomorrow), it is free and takes microseconds, it can't hallucinate a SKU that doesn't exist, and the weights are a business decision that
-should be edited in code review, not buried in a prompt.
+The response has the extraction info (which path was used, latency, cost), each spec field as `{value, confidence, reason, source}`, the top 3 inventory matches with a score breakdown, the image estimate, a `needs_review` boolean and a list of flags. Every request also logs one line with latency, model and cost.
 
-**3. Image estimate (`app/cv.py`).** Two independent classical detectors: Hough circles and an enclosed-region (edge-fenced) contour method.
-Count = the larger of the two (on the dev images both under-count more than they over-count; this did not hold for every test image, see EVALUATION.md case `c02`); agreement within 20% -> confidence high/medium,
-disagreement, blur/low contrast, zero hits or > 80 stones -> low. Optional vision-LLM count (`use_vlm`) is compared and flagged on disagreement.
+## How it works
 
-**4. Confidence + review (`app/pipeline.py`).** Every field has `{value, confidence, reason, source}`. Flags: low-confidence value, missing type/metal,
-dimension outside a per-product plausible range, > 100 stones, brief vs image count disagreement, "no stones" vs stones in the image,
-VLM vs CV disagreement, no/withheld auto-selection. `needs_review` is true for any warning/critical flag.
+**Extraction.** The model returns JSON and Pydantic validates it. If the output is bad, I try these in order and the response says which one was used: repair it (strip code fences, extra text, trailing commas), retry once with a corrective prompt, switch to the fallback model, fall back to keyword rules, and finally return an all-unknown result. A field that fails validation is set to null instead of failing the whole reply.
 
-**5. Evaluation.** See `EVALUATION.md`. 44 labelled cases, 13 synthetic images.
+For confidence I did not use the model's own opinion. Each value is checked against a simple keyword reader run on the brief. If they agree the field is "high". If the model gave a value with no support in the text it is "medium". If they contradict each other it is "low". Anything that needed a repair, retry or fallback model is capped at "medium".
 
-## Limitations (please read)
-* **The LLM path was run live only once, on Gemini** (`gemini-3.5-flash` with `gemini-3.1-flash-lite` fallback), during intermittent API 503s; results are in `EVALUATION.md` and are indicative, not definitive. The Anthropic and OpenAI request payloads follow each vendor's documented format but are **untested**.
-  Retry/repair/fallback logic is also covered by tests with a scripted fake client. The vision-LLM count comparison is incomplete (3 of 13 calls returned).
-* Keep API model names in env vars: the originally-defaulted Gemini models (2.0/2.5) had been retired for new keys and returned 404 (the service degraded to rules and said so).
-* **Images are synthetic** (OpenCV-drawn stones on a band). Real photos have reflections, occlusion, perspective and metal prongs. CV parameters were tuned on the
-  synthetic generator (dev seeds disjoint from test seeds) and assume stones of ~5-25 px radius in a ~512 px image. Expect real-world accuracy to be worse.
-* Test briefs and the rules extractor share an author, so rules-path accuracy is optimistic; the `natural` subset (written afterwards) is the more honest number. Two fixes were made after seeing test results, so that subset is no longer fully held out (details in EVALUATION.md).
-* `dimension_mm` means different things per product (ring inner diameter, necklace length...); there is no width/height split. Ring size conversion is a linear approximation of US sizing.
-* Inventory is 40 hand-written rows; weights are reasoned, not learned.
-* Multipart only (no JSON/base64 body). No auth, rate limiting or persistence.
+**Matching.** This is plain code, no LLM. Each inventory row gets a weighted score over the attributes the brief actually mentions (weights are listed at the top of `app/matcher.py`). Ties are broken by SKU so the same input always gives the same ranking, and there is a test for that. I kept the LLM out of this step because a rep needs to see exactly why one item beat another, the same brief shouldn't give a different quote tomorrow, and the model can't invent a SKU that doesn't exist.
 
-## AWS deployment sketch
-Container on **ECS Fargate** behind an **ALB** (stateless, scales on CPU/request count; OpenCV is CPU-only so no GPU needed). API keys in **Secrets Manager** injected as task env vars;
-uploaded images to **S3** (short lifecycle) if audit is needed; logs/metrics (latency, cost, mode, flag rate) to **CloudWatch** with alarms on `rules_fallback` rate and p95 latency;
-inventory in S3/RDS if it outgrows a CSV. If the LLM provider is Anthropic or others via **Bedrock**, use an IAM task role instead of a key. Lambda is viable for low volume but
-OpenCV layer size and cold starts make Fargate the simpler default.
+An item is auto-selected only if its score is at least 0.85, it leads the runner-up by 0.04, enough of the brief was specified, and every categorical attribute that was specified (type, metal, purity, stone, finish) matches exactly. The last rule came from the first evaluation run, where partial credit picked a yellow gold pendant for a rose gold request.
 
-## How AI tools were used
-This was built pair-programming style with Claude Code, which produced the first draft of most modules, the synthetic image generator and the test scaffolding.
-What I changed or rejected after measuring: the first Hough parameters were bad (MAE 2.6 on dev); I grid-searched them on a dev set and kept the better ones.
-An "enclosed-region" contour method was tried as primary and rejected (worse than Hough alone, kept only as the cross-check). The first matcher auto-selected a
-yellow-gold pendant for a rose-gold request because of partial credit; I added the exact-categorical-match rule. A unit test caught that the number coercion silently turned `-5` into `5`.
-An initial 98% extraction score was treated with suspicion (same author for briefs and rules), so a second "natural" brief set was added and reported separately.
-Items I did not verify against reality: the live LLM calls (see Limitations).
+**Image count.** Two OpenCV detectors: Hough circles, and a contour method that counts regions enclosed by edges. I take the larger count. If the two agree within about 20% the confidence is high, and if they disagree, the image is blurry, nothing is found, or there are more than 80 stones, it is low.
+
+**Flags.** A field is flagged for review when its confidence is low, when type or metal is missing, when a dimension is outside a plausible range for the product, when the brief and the image disagree on the count, or when nothing could be auto-selected.
+
+## Evaluation
+
+Details and the failure analysis are in `EVALUATION.md`. In short: 44 hand-labelled cases and 13 synthetic images. The keyword path gets about 98% field accuracy on my labels, and Gemini got about 93% in a single run, but with many more unflagged errors. Read the caveats in that file before quoting any number.
+
+## Limitations
+
+- The LLM path was run live once, on Gemini only, while the API was returning errors. The Anthropic and OpenAI request formats follow their docs but I have not run them.
+- The images are synthetic (drawn with OpenCV), and I tuned the CV parameters on them. Real photos will be harder.
+- I wrote the briefs, the labels and the keyword rules, so the keyword numbers are optimistic. I fixed a few things after seeing results, so the test set is not perfectly held out.
+- `dimension_mm` means different things per product (ring inner diameter, necklace length), and there is no separate width field.
+- The inventory is 40 rows I made up. The weights are chosen by reasoning, not learned.
+- Multipart upload only. No auth, rate limiting or storage.
+
+## If I deployed this on AWS
+
+Container on ECS Fargate behind an ALB. It is stateless and CPU-only, so no GPU. API keys in Secrets Manager, passed as environment variables. Uploaded images to S3 with a short lifecycle if I need an audit trail. Logs and metrics to CloudWatch, with alarms on the share of requests that fall back to rules and on p95 latency. Lambda would also work at low volume, but OpenCV's size and cold starts make Fargate simpler.
+
+## How I used AI tools
+
+I built this with Claude Code, which wrote most of the first drafts of the code, the synthetic image generator and the tests. I gave it the task and supplied my own Gemini key for the live tests. What I took from the results and changed:
+
+- The first Hough settings were poor, so we grid-searched them on a separate dev set and kept the better ones.
+- An alternative contour method was tried as the main counter and dropped because it was worse. It stayed only as a cross-check.
+- The first matcher auto-selected near-misses because of partial credit, which led to the exact-match rule above.
+- A unit test caught `-5` being read as `5`.
+- An early 98% score looked too good because the same author wrote the briefs and the rules, so I added 10 messier briefs and report them separately.
+- The first live Gemini run scored lower than the keyword rules and showed that unsupported guesses get "medium" confidence and are not flagged. I wrote that up in `EVALUATION.md` and did not tune it away.
+
+The live LLM results are a single run and are not conclusive.
